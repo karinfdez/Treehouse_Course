@@ -72,16 +72,34 @@
 # 	print_hello(answer)
 # end
 #until_loop
-answer=""
-until answer=="no" 
-	print "Do you want this loop to continue?(Press yes or no): "
-	answer=gets.chomp.downcase
+# answer=""
+# until answer=="no" 
+# 	print "Do you want this loop to continue?(Press yes or no): "
+# 	answer=gets.chomp.downcase
+# end
+
+#Exercises using times
+
+# 5.times do
+# 	puts "Hello!"
+# end
+
+#times with argument
+#item is going to print numbers
+# 5.times do |item|
+# 	puts "Hello! #{item}"
+# end
+
+#for_loop
+#The number 10 is included too
+# for item in 1..10 do
+# 	puts "The current item is #{item}"
+# end
+
+#for loop with arrays
+for item in ["programming","is","fun"] do
+	puts "The current item is #{item}"
 end
-
-
-
-
-
 
 
 
