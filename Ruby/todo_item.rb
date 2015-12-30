@@ -19,6 +19,7 @@ class TodoItem
 	end
 
 	def to_s
+		
 		if complete?
 			"[C] #{name}"
 		else

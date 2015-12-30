@@ -47,6 +47,7 @@ class TodoList
 	def mark_complete(name)
 		
 		if index=get_index(name)
+			#This mark_complete! method is on the todo_item.rb
 			todo_items[index].mark_complete!
 			return true
 		else
@@ -54,25 +55,42 @@ class TodoList
 		end
 	end
 	
-	def to_s
-		"List Name: #{@name}\t
-		Items: #{todo_items}"
+	def print_list(kind="all")
+		
+		puts "#{name}- #{kind} List"
+		puts "-" * 30
+		todo_items.each do |item|
+		case kind
+			when "all"
+				puts item
+			when "complete"
+				puts item if item.complete?
+		end
+		puts "\n"
 	end
+end
 end
 
 todo_list=TodoList.new("Groceries")
 todo_list.add_item("Milk")
 todo_list.add_item("Juice")
 todo_list.add_item("Tomatoes")
-puts todo_list
-
-puts "Removing Juice from list:"
+todo_list.add_item("Butter")
+puts "ORIGINAL LIST: "
+todo_list.print_list("all")
 
 if todo_list.remove_item("Juice")
 	puts "Juice were removed from list"
 end
-
-if todo_list.mark_complete("Milk")
-	puts "Milk was mark as complete"
+def mark_complete_item(name)
+	puts name + " was mark as complete"
 end
-puts todo_list
+
+if todo_list.mark_complete("Milk") 
+	mark_complete_item("Milk")
+end
+if todo_list.mark_complete("Butter") 
+	mark_complete_item("Butter")
+end
+puts "LIST WITH ONLY COMPLETE ITEMS: "
+todo_list.print_list("complete")
