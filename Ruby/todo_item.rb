@@ -1,5 +1,5 @@
 class TodoItem
-	attr_reader :name
+	attr_reader :name, :complete
 	
 	def initialize(name)
 		@name=name

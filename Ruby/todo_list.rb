@@ -19,8 +19,6 @@ class TodoList
 	#I can use item.name because of the attr_reader on TodoItemClass
 			if item.name==name
 				found=true
-			end
-			if found
 				break
 			else
 				index+=1
@@ -28,6 +26,28 @@ class TodoList
 		end
 		if found
 			todo_items.delete_at(index)
+			return true
+		else
+			return false
+		end
+	end
+
+	def get_index(name)
+		index=0
+		todo_items.each do |item|
+			if item.name==name
+				break
+			else
+				index+=1
+			end
+	  end
+	  return index
+	end
+
+	def mark_complete(name)
+		
+		if index=get_index(name)
+			todo_items[index].mark_complete!
 			return true
 		else
 			return false
@@ -43,11 +63,16 @@ end
 todo_list=TodoList.new("Groceries")
 todo_list.add_item("Milk")
 todo_list.add_item("Juice")
+todo_list.add_item("Tomatoes")
 puts todo_list
 
 puts "Removing Juice from list:"
 
 if todo_list.remove_item("Juice")
 	puts "Juice were removed from list"
+end
+
+if todo_list.mark_complete("Milk")
+	puts "Milk was mark as complete"
 end
 puts todo_list
